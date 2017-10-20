@@ -20,7 +20,13 @@ class Api::V1::ChatsController < ApplicationController
 
   def show
     chat = Chat.find_by(id: params[:id])
-    render json: chat
+    chatJson = {
+      name: chat.name,
+      category: chat.category,
+      messages: chat.messages,
+      id: chat.id
+    }
+    render json: chatJson
   end
 
   private
